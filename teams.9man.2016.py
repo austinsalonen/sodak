@@ -79,9 +79,11 @@ teams = [ \
 	("Dupree", 34.600, 1, 4), \
 	("Crazy Horse", 33.375, 0, 8) ]
 
-qualifiers = zip(sorted(teams, key=lambda x: (x[1], randint(0, 10)), reverse=True)[:16], range(1, 17))
-home_teams = qualifiers[:8]
-away_teams = sorted(qualifiers[8:], key=lambda x: x[1], reverse=True)
+playoff_count = 16
+
+qualifiers = zip(sorted(teams, key=lambda x: (x[1], randint(0, 10)), reverse=True)[:playoff_count], range(1, playoff_count + 1))
+home_teams = qualifiers[:playoff_count // 2]
+away_teams = sorted(qualifiers[playoff_count // 2:], key=lambda x: x[1], reverse=True)
 
 matchups = zip(away_teams, home_teams)
 for (away, a_seed), (home, h_seed) in matchups:
